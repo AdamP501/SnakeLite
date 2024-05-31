@@ -1,3 +1,11 @@
+/**
+ Adam Pei
+ 31st May 2024
+ Snake Lite
+ Help given by Ms Nahar, CS@CIS, Sander Day, w3schools, GeeksForGeeks, GPT 4, Stanford CS page, and Max O'Didily's youtube channel
+ This is a snake game
+ **/
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,6 +58,7 @@ public class MainClass extends GraphicsProgram implements ActionListener
         setUpMainMenu();
     }
 
+    //Credit to Sander, Stanford CS Page, and GPT 4 for the help.
     private void setUpMainMenu() {
         removeAll(); // Clear the canvas to ensure only the main menu is showing
         setSize(500,500);
@@ -67,7 +76,7 @@ public class MainClass extends GraphicsProgram implements ActionListener
 
         GLabel playLabel = new GLabel("Play");
         playLabel.setFont(new Font("Monospaced", Font.BOLD, 17));
-        add(playLabel, playButton.getX() + (playButton.getWidth() - playLabel.getWidth()) / 2, playButton.getY() + (playButton.getHeight() + playLabel.getAscent()) / 2); //Credit to GPT 4 for teaching me how to center the labels
+        add(playLabel, playButton.getX() + (playButton.getWidth() - playLabel.getWidth()) / 2, playButton.getY() + (playButton.getHeight() + playLabel.getAscent()) / 2);
 
         GRect instructionsButton = new GRect(getWidth() / 2 - 75, getHeight() / 2 - 25, 150, 50);
         instructionsButton.setFilled(true);
@@ -99,7 +108,8 @@ public class MainClass extends GraphicsProgram implements ActionListener
         addMouseListeners(playButton, playLabel, instructionsButton, instructionsLabel, snakeColorButton, snakeColorLabel, backgroundColorButton, backgroundColorLabel);
     }
 
-    //adds functionality to the buttons - mouse clicks will trigger certain actions. Credit to GPT 4 for the code
+    /*adds functionality to the buttons - mouse clicks will trigger certain actions.
+    Credit to GPT 4 for the help*/
     private void addMouseListeners(GRect playButton, GLabel playLabel, GRect instructionsButton, GLabel instructionsLabel, GRect snakeColorButton, GLabel snakeColorLabel, GRect backgroundColorButton, GLabel backgroundColorLabel) {
         getGCanvas().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -107,7 +117,7 @@ public class MainClass extends GraphicsProgram implements ActionListener
                 if (obj == playButton || obj == playLabel) {
                     startGame();
                 } else if (obj == instructionsButton || obj == instructionsLabel) {
-                    showInstructions();
+                    displayInstructions();
                 } else if (obj == snakeColorButton || obj == snakeColorLabel) {
                     changeSnakeColor();
                 } else if (obj == backgroundColorButton || obj == backgroundColorLabel) {
@@ -117,10 +127,12 @@ public class MainClass extends GraphicsProgram implements ActionListener
         });
     }
 
-    private void showInstructions() {
+    //Credit to GeeksForGeeks for the help
+    private void displayInstructions() {
         JOptionPane.showMessageDialog(this, "This is a snake game. Use arrow keys to move. Eat fruit to increase the length of the snake and add points to the scoreboard. The game ends if the snake crashes into the wall or itself", "Instructions", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    //Credit to Max O'Didily for the help.
     public static void playSound(String location)
     {
         try
@@ -145,7 +157,8 @@ public class MainClass extends GraphicsProgram implements ActionListener
     }
 
 
-    //Shows a drop-down menu of colours for the user to choose from
+    /*Shows a drop-down menu of colours for the user to choose from.
+    Credit to GeeksForGeeks, w3schools, and GPT 4 for the help*/
     private void changeSnakeColor() {
         String[] colors = {"Red", "Yellow", "Blue", "Green", "White", "Black"};
         String color = (String) JOptionPane.showInputDialog(this, "Select Snake Color", "Snake Color", JOptionPane.PLAIN_MESSAGE, null, colors, colors[0]);
@@ -171,7 +184,8 @@ public class MainClass extends GraphicsProgram implements ActionListener
         }
     }
 
-    //Shows a drop-down menu of colours for the user to choose from
+    /*Shows a drop-down menu of colours for the user to choose from
+    Credit to w3schools and GPT 4 for the help */
     private void changeBackgroundColor() {
         String[] colors = {"Red", "Yellow", "Blue", "Green", "White", "Black"};
         String color = (String) JOptionPane.showInputDialog(this, "Select Background Color", "Background Color", JOptionPane.PLAIN_MESSAGE, null, colors, colors[0]);
@@ -197,6 +211,7 @@ public class MainClass extends GraphicsProgram implements ActionListener
         }
     }
 
+    //Credit to CS@CIS webpage for the help
     private void startGame() {
         removeAll(); // Clear the canvas to start the game
         timer.start();
@@ -221,7 +236,8 @@ public class MainClass extends GraphicsProgram implements ActionListener
         timer.start();
     }
 
-    //Spawn the food at random positions on the screen
+    /*Spawn the food at random positions on the screen
+    Credit to CS@CIS webpage for the help*/
     public void randomFood()
     {
         Random random = new Random();
@@ -231,7 +247,8 @@ public class MainClass extends GraphicsProgram implements ActionListener
     }
 
 
-    //Show the score
+    /*Show the score
+    Credit to CS@CIS webpage for the help*/
     public void setUpInfo()
     {
         score = 0;
@@ -240,7 +257,8 @@ public class MainClass extends GraphicsProgram implements ActionListener
         add(scoreLabel);
     }
 
-    //draw the initial snake
+    /*draw the initial snake
+    Credit to CS@CIS webpage for the help*/
     public void drawSnake()
     {
         int x = 0;
@@ -257,7 +275,8 @@ public class MainClass extends GraphicsProgram implements ActionListener
     }
 
 
-    //Make sure the snake is still moving after the user lets go of the arrow keys
+    /*Make sure the snake is still moving after the user lets go of the arrow keys
+    Credit to CS@CIS webpage for the help*/
     @Override
     public void keyReleased (KeyEvent e)
     {
