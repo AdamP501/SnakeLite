@@ -340,6 +340,7 @@ public class MainClass extends GraphicsProgram implements ActionListener
     }
 
 
+    //Credit to GPT 4 for the logic
     private void growSnake()
     {
         GRect tail = snakeBody.get(snakeBody.size()-1);
